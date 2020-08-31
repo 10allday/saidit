@@ -155,11 +155,11 @@ function clone_reddit_service_repo {
 }
 
 if [ "$INSTALL_PROFILE" = "all" ]; then
-    clone_reddit_repo reddit libertysoft3/saidit
+    clone_reddit_repo reddit 10allday/saidit
 elif [ "$INSTALL_PROFILE" = "app" ]; then
     destination=$REDDIT_SRC/reddit
     if [ ! -d $destination ]; then
-        sudo -u $REDDIT_USER -H git clone https://github.com/libertysoft3/saidit.git $destination
+        sudo -u $REDDIT_USER -H git clone https://github.com/10allday/saidit.git $destination
     fi
     if [ -d $destination/upstart ]; then
         cp $destination/upstart/reddit-boot.conf /etc/init/
@@ -167,12 +167,12 @@ elif [ "$INSTALL_PROFILE" = "app" ]; then
     fi
 fi
 
-clone_reddit_repo i18n libertysoft3/reddit-i18n
+clone_reddit_repo i18n 10allday/reddit-i18n
 if [ "$INSTALL_PROFILE" = "all" ]; then
     clone_reddit_service_repo websockets
     clone_reddit_service_repo activity
 fi
-clone_reddit_repo snudown libertysoft3/snudown
+clone_reddit_repo snudown 10allday/snudown
 
 ###############################################################################
 # Configure Services
@@ -262,12 +262,12 @@ automoderator_account = automoderator
 system_user = reddit
 admin_message_acct = reddit
 
-short_description = open source is awesome
+short_description = welcome to 10allday!
 
-disable_ads = true
-disable_captcha = true
-disable_ratelimit = true
-disable_require_admin_otp = true
+disable_ads = false
+disable_captcha = false
+disable_ratelimit = false
+disable_require_admin_otp = false
 
 domain = $REDDIT_DOMAIN
 oauth_domain = $REDDIT_DOMAIN
